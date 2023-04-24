@@ -4,15 +4,7 @@ let highScore = Number(document.querySelector('.highscore').innerHTML);
 
 document.querySelector('.check').addEventListener('click', function () {
   let currentNumber = Number(document.querySelector('.guess').value);
-  if (currentNumber < guestedNumber) {
-    document.querySelector('.message').innerHTML = 'Plus grand';
-    score--;
-    document.querySelector('.score').textContent = score;
-  } else if (currentNumber > guestedNumber) {
-    document.querySelector('.message').innerHTML = 'Plus petit';
-    score--;
-    document.querySelector('.score').textContent = score;
-  } else {
+  if (currentNumber == guestedNumber) {
     document.querySelector('.message').innerHTML = 'Bravo tu as trouvé';
     document.querySelector('.check').style.display = 'none';
     document.querySelector('body').style.backgroundColor = '#60b347';
@@ -20,6 +12,11 @@ document.querySelector('.check').addEventListener('click', function () {
     if (Number(document.querySelector('.highscore').innerHTML) < score) {
       document.querySelector('.highscore').innerHTML = score;
     }
+  } else if (currentNumber !== guestedNumber) {
+    document.querySelector('.message').textContent =
+      currentNumber > guestedNumber ? 'Plus petit' : 'Plus grand';
+    score--;
+    document.querySelector('.score').textContent = score;
   }
 });
 document.querySelector('.again').addEventListener('click', function () {
