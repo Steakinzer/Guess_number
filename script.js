@@ -1,9 +1,4 @@
-function getRandomInt(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min)) + min;
-}
-let guestedNumber = getRandomInt(0, 20);
+let guestedNumber = Math.trunc(Math.random() * 20) + 1;
 let score = Number(document.querySelector('.score').innerHTML);
 let highScore = Number(document.querySelector('.highscore').innerHTML);
 
@@ -23,6 +18,7 @@ document.querySelector('.check').addEventListener('click', function () {
     document.querySelector('.message').innerHTML = 'Bravo tu as trouvé';
     document.querySelector('.check').style.display = 'none';
     document.querySelector('body').style.backgroundColor = 'green';
+    document.querySelector('.number').innerHTML = guestedNumber;
     if (Number(document.querySelector('.highscore').innerHTML) < score) {
       document.querySelector('.highscore').innerHTML = score;
     }
@@ -30,9 +26,10 @@ document.querySelector('.check').addEventListener('click', function () {
 });
 document.querySelector('.again').addEventListener('click', function () {
   document.querySelector('.guess').value = '';
-  guestedNumber = getRandomInt(0, 20);
+  guestedNumber = Math.trunc(Math.random() * 20) + 1;
   document.querySelector('.check').style.display = 'block';
   score = 20;
   document.querySelector('.score').textContent = 20;
   document.querySelector('body').style.backgroundColor = '#222';
+  document.querySelector('.number').innerHTML = '?';
 });
